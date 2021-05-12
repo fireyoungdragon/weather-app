@@ -28,11 +28,8 @@ struct weatherControl {
     }
     
     func doRequest(with urlString: String) {
-        //1.create a URl
         if let url = URL(string: urlString){
-            //2.create a URLSession
             let session = URLSession(configuration: .default)
-            //3.give the session a task
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil{
                     self.delegate?.didFailWithError(error: error!)
@@ -45,7 +42,6 @@ struct weatherControl {
                     }
                 }
             }
-            //4.start the task
             task.resume()
         }
     }
